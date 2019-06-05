@@ -6,9 +6,7 @@ FROM andrewhills/ubuntu-python-dev:latest
 
 WORKDIR /tmp/
 
-RUN mkdir envs
-
-COPY envs/ /tmp/envs/
+RUN git clone https://github.com/ahills60/anaconda-environments.git envs
 
 # Iterate through the contents of the envs/ directory
 RUN bash -c "for f in envs/*.yml; do echo \"Processing \$f...\"; conda env create --quiet --file \$f; done"
